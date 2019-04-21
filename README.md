@@ -1,6 +1,8 @@
 # fabric-1.4-kube
 Build kubernetes dev environment for Fabric 1.4
 
+See the docs folder for a better formatting.
+
 1 Project Purpose
 
 The purpose of this project is:
