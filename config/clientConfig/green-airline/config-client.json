@@ -1,0 +1,112 @@
+{
+  "orgContext" : 
+  {
+    "orgId"   : "Green Airline", 
+    "orgName" : "green-airline",
+    "mspId"   : "green-airline"
+  },  
+  
+  "chainCodes" :
+  [
+    {
+      "chainCodeName" : "bpscc",
+      "chainCodeVersion" : "1.0",
+      "chainCodePath" : "",
+      "endorsementPolicyName" : "sdkwrapper.fabric.policy.QuorumEndorsementPolicy"
+    }
+  ],
+  
+  "users" :
+  [
+    {
+      "name" : "Admin",
+      "roles" : 
+      [
+        "admin"
+      ],
+      "account"       : "adminAccount",
+      "affiliation"   : "green-airlineAffiliation",
+      "mspId"         : "green-airline",
+      "enrollPrivKey" : "-----BEGIN PRIVATE KEY-----
+MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgGIxft4Z0FRNq5GS+
+p3fao9bUcJMaDqLAWmB2M6kpH0WhRANCAARMZybEQeklBK3s2oconXYO441KPqgh
+VitBVyqI7Dm8sLqZaRh+y4PP6aLanvItLyiiQw0WFHr/aKE8oUMk8+Kv
+-----END PRIVATE KEY-----",
+      "enrollCert"    : "-----BEGIN CERTIFICATE-----
+MIICIjCCAcigAwIBAgIRAJyVBE6yYdsy2R355UPzH6kwCgYIKoZIzj0EAwIwbTEL
+MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+cmFuY2lzY28xFjAUBgNVBAoTDWdyZWVuLWFpcmxpbmUxGTAXBgNVBAMTEGNhLmdy
+ZWVuLWFpcmxpbmUwHhcNMTkwNDE0MDcwNjAwWhcNMjkwNDExMDcwNjAwWjBpMQsw
+CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+YW5jaXNjbzEPMA0GA1UECxMGY2xpZW50MRwwGgYDVQQDDBNBZG1pbkBncmVlbi1h
+aXJsaW5lMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAETGcmxEHpJQSt7NqHKJ12
+DuONSj6oIVYrQVcqiOw5vLC6mWkYfsuDz+mi2p7yLS8ookMNFhR6/2ihPKFDJPPi
+r6NNMEswDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwKwYDVR0jBCQwIoAg
+ssjvnimkzM8qzDy0jHnyWg472qDGruKc7lqyq1t/8AwwCgYIKoZIzj0EAwIDSAAw
+RQIhAIroxnzrb7qhENCHUKuvGGLQ4psLuevlXErsoZ1Um+LBAiBs4bL+Qq0JU9Tv
+NbbuCd075aRTAbdxOu58PoXlsXX6oQ==
+-----END CERTIFICATE-----"
+    }, 
+    {
+      "name" : "User1",
+      "roles" : 
+      [
+        "member"
+      ],
+      "account"       : "memberAccount",
+      "affiliation"   : "green-airlineAffiliation",
+      "mspId"         : "green-airline",
+      "enrollPrivKey" : "-----BEGIN PRIVATE KEY-----
+MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgOzr8XSLa4MSssIHc
+kCSkMBMyPRSjxQlo1Eiq3aY6AqehRANCAAQKxlaZSMLAA725Y1tzD91jv7/mAA46
+EQp6W072S3LbHD0Isa8ic239giREvaf2Tj5SUFyPh/i40fLItr45pQMq
+-----END PRIVATE KEY-----",
+      "enrollCert"    : "-----BEGIN CERTIFICATE-----
+MIICIjCCAcigAwIBAgIRAIKkGTwkzF78rdEteC19G6gwCgYIKoZIzj0EAwIwbTEL
+MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+cmFuY2lzY28xFjAUBgNVBAoTDWdyZWVuLWFpcmxpbmUxGTAXBgNVBAMTEGNhLmdy
+ZWVuLWFpcmxpbmUwHhcNMTkwNDE0MDcwNjAwWhcNMjkwNDExMDcwNjAwWjBpMQsw
+CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+YW5jaXNjbzEPMA0GA1UECxMGY2xpZW50MRwwGgYDVQQDDBNVc2VyMUBncmVlbi1h
+aXJsaW5lMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAECsZWmUjCwAO9uWNbcw/d
+Y7+/5gAOOhEKeltO9kty2xw9CLGvInNt/YIkRL2n9k4+UlBcj4f4uNHyyLa+OaUD
+KqNNMEswDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwKwYDVR0jBCQwIoAg
+ssjvnimkzM8qzDy0jHnyWg472qDGruKc7lqyq1t/8AwwCgYIKoZIzj0EAwIDSAAw
+RQIhAIKZI07lljlwsxAuhagM+7vNWoyaNnSOS+MRIZ5lgaxVAiBjlLCW51puQHoM
+2Aw7ZJWMeAfdJ/HR68LHT4hnNcidhg==
+-----END CERTIFICATE-----"
+    }  
+  ],
+  
+  "peers" :
+  [
+    {
+      "peerId" : "peer0.green-airline",
+      "orgId"  : "green-airline",
+      "ipAddress" : "peer0-green-airline",
+      "eventSource" : false,
+      "endorsePort" : "7051",
+      "eventHubPort" : "",
+      "useTLS" : false,
+      "tlsCertificate" : "-----BEGIN CERTIFICATE-----
+MIICSjCCAfGgAwIBAgIQfEERRpc1qxGdVNc2cVPc8zAKBggqhkjOPQQDAjBwMQsw
+CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+YW5jaXNjbzEWMBQGA1UEChMNZ3JlZW4tYWlybGluZTEcMBoGA1UEAxMTdGxzY2Eu
+Z3JlZW4tYWlybGluZTAeFw0xOTA0MTQwNzA2MDBaFw0yOTA0MTEwNzA2MDBaMHAx
+CzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4g
+RnJhbmNpc2NvMRYwFAYDVQQKEw1ncmVlbi1haXJsaW5lMRwwGgYDVQQDExN0bHNj
+YS5ncmVlbi1haXJsaW5lMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEY30ZTy3P
+za/A41RMipszibLmhwMu6gSPDo57I4w5ji3DSVdQfE5QRzSkUeZOh7qlLZCaEMNZ
+7yXPNcU42KfQfaNtMGswDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUF
+BwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MCkGA1UdDgQiBCC8KlyKa7m2
+1IM/HQSuS17pneBAObyzHCupQnYF76AsYDAKBggqhkjOPQQDAgNHADBEAiBQ81bU
+n2vlL7WkXFgWSV9zvRm6HZanqOpCXoPCfDKLQQIgQ9otVOwMPdXQKIEq5CbJrDd6
+VncMOZ9D2xbP+iQ2lrc=
+-----END CERTIFICATE-----",
+      "trustServerCert" : true,
+      "sslProvider" : "openSSL",
+      "negotiationType" : "TLS"
+    }
+  ] 
+}     
+    
