@@ -2,11 +2,14 @@
 Build kubernetes dev environment for Fabric 1.4
 
 1 Project Purpose
+
 The purpose of this project is:
+
     1) Provide a local dev environment for the Hyperledger Fabric using a Kubernetes Minikube for running the various containers.
     2) Illustrate the process necessary for creating a Fabric development environment.
     3) Provide a generic wrapper functionality around the Fabric Java SDK that manages both a happy path as well as error handling for Fabric transactions.
     4) Provide a starting point for Fabric smart contract development and integration.
+    
 
 This document assumes the reader has an understanding of the Hyperledger Fabric architecture and has read the Fabric documents which can be found at http://hyperledger-fabric.readthedocs.io/en/latest/ . The configuration information provided here is more an extension of this information targeting how the various process interdependencies work at a physical level. In addition the sdk wrapper implementation discussion provides an understanding of how to interact with the Java Fabric SDK in both happy path and error paths.
 
