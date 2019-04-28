@@ -17,7 +17,7 @@ spec:
       containers:
         - name: orderer-container
           # imagePullPolicy: Never
-          image: library/orderer:1.4.0
+          image: library/orderer:1.4.1
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric
 #          volumeMounts:
 #            - mountPath: /var/hyperledger/orderer

@@ -1,4 +1,4 @@
-FROM hyperledger/fabric-peer:1.4.0
+FROM hyperledger/fabric-peer:1.4.1
 
 RUN ["rm", "-rf", "/etc/hyperledger/fabric/msp"]
 RUN ["rm", "-rf", "/etc/hyperledger/fabric/tls"]

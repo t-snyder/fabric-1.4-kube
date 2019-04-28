@@ -1,4 +1,4 @@
-FROM hyperledger/fabric-orderer:1.4.0
+FROM hyperledger/fabric-orderer:1.4.1
 
 COPY ./fabric-gen/crypto-config/ordererOrganizations/orderer/orderers/orderer.orderer/ /var/hyperledger/orderer/
 

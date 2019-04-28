@@ -86,7 +86,7 @@ RQIhAIKZI07lljlwsxAuhagM+7vNWoyaNnSOS+MRIZ5lgaxVAiBjlLCW51puQHoM
       "ipAddress" : "peer0-green-airline",
       "eventSource" : false,
       "endorsePort" : "7051",
-      "eventHubPort" : "",
+      "eventingPort" : "7053",
       "useTLS" : false,
       "tlsCertificate" : "-----BEGIN CERTIFICATE-----
 MIICSjCCAfGgAwIBAgIQfEERRpc1qxGdVNc2cVPc8zAKBggqhkjOPQQDAjBwMQsw

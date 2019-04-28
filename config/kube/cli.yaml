@@ -17,7 +17,7 @@ spec:
       containers:
         - name: cli-container
           imagePullPolicy: IfNotPresent
-          image: library/cli-peer:1.4.0
+          image: library/cli-peer:1.4.1
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
           tty: true
           volumeMounts:

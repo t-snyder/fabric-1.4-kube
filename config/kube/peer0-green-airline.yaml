@@ -32,7 +32,7 @@ spec:
       containers:
         - name: green-airline-peer0-container
           imagePullPolicy: IfNotPresent
-          image: library/peer0-green-airline:1.4.0
+          image: library/peer0-green-airline:1.4.1
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
           volumeMounts:
 #            - mountPath: /etc/hyperledger/fabric/msp
@@ -126,7 +126,7 @@ spec:
 #            - 'while true; do sleep 20170504; done'
         - name: green-airline-peer0-couchdb
           imagePullPolicy: IfNotPresent
-          image: hyperledger/fabric-couchdb:0.4.10
+          image: hyperledger/fabric-couchdb:0.4.15
           env:
             - name: COUCHDB_USER
               value: "dev01"
