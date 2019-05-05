@@ -83,7 +83,7 @@ MitXAw==
     {
       "peerId" : "peer0.green-airline",
       "orgId"  : "green-airline",
-      "ipAddress" : "peer0-green-airline",
+      "ipAddress" : "peer0.green-airline.com",
       "eventSource" : false,
       "endorsePort" : "7051",
       "eventHubPort" : "",

@@ -11,7 +11,7 @@ Organizations:
     - &orderer
         Name: orderer
         ID: orderer
-        MSPDir: crypto-config/ordererOrganizations/orderer/msp
+        MSPDir: crypto-config/ordererOrganizations/orderer.com/msp
         Policies:
             Readers:
                 Type: Signature
@@ -26,7 +26,7 @@ Organizations:
     - &green-airline
         Name: green-airline
         ID: green-airline
-        MSPDir: crypto-config/peerOrganizations/green-airline/msp
+        MSPDir: crypto-config/peerOrganizations/green-airline.com/msp
         Policies:
             Readers:
                 Type: Signature
@@ -38,13 +38,13 @@ Organizations:
                 Type: Signature
                 Rule: OR('green-airline.admin')
         AnchorPeers:
-            - Host: peer0-green-airline
+            - Host: peer0.green-airline.com
               Port: 7051
 
     - &blue-airline
         Name: blue-airline
         ID: blue-airline
-        MSPDir: crypto-config/peerOrganizations/blue-airline/msp
+        MSPDir: crypto-config/peerOrganizations/blue-airline.com/msp
         Policies:
             Readers:
                 Type: Signature
@@ -56,13 +56,13 @@ Organizations:
                 Type: Signature
                 Rule: OR('blue-airline.admin')
         AnchorPeers:
-            - Host: peer0-blue-airline
+            - Host: peer0.blue-airline.com
               Port: 7051
 
     - &green-agencies
         Name: green-agencies
         ID: green-agencies
-        MSPDir: crypto-config/peerOrganizations/green-agencies/msp
+        MSPDir: crypto-config/peerOrganizations/green-agencies.com/msp
         Policies:
             Readers:
                 Type: Signature
@@ -74,13 +74,13 @@ Organizations:
                 Type: Signature
                 Rule: OR('green-agencies.admin')
         AnchorPeers:
-            - Host: peer0-green-agencies
+            - Host: peer0.green-agencies.com
               Port: 7051
 
     - &blue-agencies
         Name: blue-agencies
         ID: blue-agencies
-        MSPDir: crypto-config/peerOrganizations/blue-agencies/msp
+        MSPDir: crypto-config/peerOrganizations/blue-agencies.com/msp
         Policies:
             Readers:
                 Type: Signature
@@ -92,13 +92,13 @@ Organizations:
                 Type: Signature
                 Rule: OR('blue-agencies.admin')
         AnchorPeers:
-            - Host: peer0-blue-agencies
+            - Host: peer0.blue-agencies.com
               Port: 7051
  
     - &further
         Name: further
         ID: further
-        MSPDir: crypto-config/peerOrganizations/further/msp
+        MSPDir: crypto-config/peerOrganizations/further.com/msp
         Policies:
             Readers:
                 Type: Signature
@@ -110,7 +110,7 @@ Organizations:
                 Type: Signature
                 Rule: OR('further.admin')
         AnchorPeers:
-            - Host: peer0-further
+            - Host: peer0.further.com
               Port: 7051
 
 
@@ -148,7 +148,7 @@ Orderer: &OrdererDefaults
         V1_1: true
 
     Addresses:
-        - orderer-service:7050
+        - orderer:7050
 
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s

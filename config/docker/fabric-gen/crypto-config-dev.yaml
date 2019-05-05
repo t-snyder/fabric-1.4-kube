@@ -11,7 +11,7 @@ OrdererOrgs:
   # Orderer
   # ---------------------------------------------------------------------------
   - Name: orderer
-    Domain: orderer
+    Domain: orderer.com
     # ---------------------------------------------------------------------------
     # "Specs" - See PeerOrgs below for complete description
     # ---------------------------------------------------------------------------
@@ -25,7 +25,7 @@ PeerOrgs:
   # Org Green Airline
   # ---------------------------------------------------------------------------
   - Name: green-airline
-    Domain: green-airline
+    Domain: green-airline.com
     EnableNodeOUs: true
     Template:
       Count: 1
@@ -35,7 +35,7 @@ PeerOrgs:
   # Org Blue Airline:
   # ---------------------------------------------------------------------------
   - Name: blue-airline
-    Domain: blue-airline
+    Domain: blue-airline.com
     EnableNodeOUs: true
     Template:
       Count: 1
@@ -45,7 +45,7 @@ PeerOrgs:
   # Org Green Agencies:
   # ---------------------------------------------------------------------------
   - Name: green-agencies
-    Domain: green-agencies
+    Domain: green-agencies.com
     EnableNodeOUs: true
     Template:
       Count: 1
@@ -55,7 +55,7 @@ PeerOrgs:
   # Org Blue Agencies:
   # ---------------------------------------------------------------------------
   - Name: blue-agencies
-    Domain: blue-agencies
+    Domain: blue-agencies.com
     EnableNodeOUs: true
     Template:
       Count: 1
@@ -65,7 +65,7 @@ PeerOrgs:
   # Org Further Networks
   # ---------------------------------------------------------------------------
   - Name: further
-    Domain: further
+    Domain: further.com
     EnableNodeOUs: true
     Template:
       Count: 1

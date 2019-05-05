@@ -45,13 +45,13 @@ spec:
             - name: CORE_VM_ENDPOINT
               value: unix:///host/var/run/docker.sock
             - name: CORE_PEER_ID
-              value: "peer0-green-airline"
+              value: "peer0.green-airline.com"
             - name: CORE_PEER_LOCALMSPID
               value: "green-airline"
             - name: CORE_PEER_ADDRESS
-              value: "peer0-green-airline:7051"
+              value: "peer0.green-airline.com:7051"
             - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
-              value: "peer0-green-airline:7051"
+              value: "peer0.green-airline.com:7051"
 #            - name: CORE_PEER_GOSSIP_BOOTSTRAP
 #              value: "peer0-green-airline:7051"
             - name: CORE_PEER_GOSSIP_USELEADERELECTION
@@ -69,7 +69,7 @@ spec:
 #            - name: CORE_VM_HOSTCONFIG_DNS
 #              value: $NGINX_PROXY_DNS
             - name: CORE_PEER_TLS_ENABLED
-              value: "false"
+              value: "true"
             - name: CORE_PEER_TLS_CERT_FILE
               value: "/etc/hyperledger/fabric/tls/server.crt"
             - name: CORE_PEER_TLS_KEY_FILE

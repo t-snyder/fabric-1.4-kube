@@ -1,6 +1,6 @@
 FROM hyperledger/fabric-orderer:1.4.0
 
-COPY ./fabric-gen/crypto-config/ordererOrganizations/orderer/orderers/orderer.orderer/ /var/hyperledger/orderer/
+COPY ./fabric-gen/crypto-config/ordererOrganizations/orderer.com/orderers/orderer.orderer.com/ /var/hyperledger/orderer/
 
 COPY ./fabric-gen/channel-artifacts/ /var/hyperledger/orderer/
 

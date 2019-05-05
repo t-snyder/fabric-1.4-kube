@@ -1,6 +1,5 @@
-FROM openjdk:8-alpine
+FROM openjdk:8-jre
 
-RUN ["mkdir", "/usr/src"]
 RUN ["mkdir", "/usr/src/app"]
 RUN ["mkdir", "/usr/src/app/config"]
 RUN ["mkdir", "/usr/src/app/secret"]

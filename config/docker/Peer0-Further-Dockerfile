@@ -3,8 +3,8 @@ FROM hyperledger/fabric-peer:1.4.0
 RUN ["rm", "-rf", "/etc/hyperledger/fabric/msp"]
 RUN ["rm", "-rf", "/etc/hyperledger/fabric/tls"]
 
-COPY ./fabric-gen/crypto-config/peerOrganizations/further/peers/peer0.further/msp /etc/hyperledger/fabric/msp
-COPY ./fabric-gen/crypto-config/peerOrganizations/further/peers/peer0.further/tls /etc/hyperledger/fabric/tls
+COPY ./fabric-gen/crypto-config/peerOrganizations/further.com/peers/peer0.further.com/msp /etc/hyperledger/fabric/msp
+COPY ./fabric-gen/crypto-config/peerOrganizations/further.com/peers/peer0.further.com/tls /etc/hyperledger/fabric/tls
 COPY ./chaincode/go/ /opt/gopath/src/github.com/hyperledger/fabric/examples/chaincode/go
 
 WORKDIR /opt/gopath/src/github.com/hyperledger/fabric/peer

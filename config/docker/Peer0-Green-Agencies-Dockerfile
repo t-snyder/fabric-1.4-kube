@@ -3,8 +3,8 @@ FROM hyperledger/fabric-peer:1.4.0
 RUN ["rm", "-rf", "/etc/hyperledger/fabric/msp"]
 RUN ["rm", "-rf", "/etc/hyperledger/fabric/tls"]
 
-COPY ./fabric-gen/crypto-config/peerOrganizations/green-agencies/peers/peer0.green-agencies/msp /etc/hyperledger/fabric/msp
-COPY ./fabric-gen/crypto-config/peerOrganizations/green-agencies/peers/peer0.green-agencies/tls /etc/hyperledger/fabric/tls
+COPY ./fabric-gen/crypto-config/peerOrganizations/green-agencies.com/peers/peer0.green-agencies.com/msp /etc/hyperledger/fabric/msp
+COPY ./fabric-gen/crypto-config/peerOrganizations/green-agencies.com/peers/peer0.green-agencies.com/tls /etc/hyperledger/fabric/tls
 COPY ./chaincode/go/ /opt/gopath/src/github.com/hyperledger/fabric/examples/chaincode/go
 
 WORKDIR /opt/gopath/src/github.com/hyperledger/fabric/peer
