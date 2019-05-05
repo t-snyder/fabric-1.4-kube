@@ -30,10 +30,10 @@ Organizations:
         Policies:
             Readers:
                 Type: Signature
-                Rule: OR('green-airline.admin', 'green-airline.peer', 'green-airline.client')
+                Rule: OR('green-airline.admin', 'green-airline.member', 'green-airline.peer', 'green-airline.client')
             Writers:
                 Type: Signature
-                Rule: OR('green-airline.admin', 'green-airline.client')
+                Rule: OR('green-airline.admin', 'green-airline.member', 'green-airline.client')
             Admins:
                 Type: Signature
                 Rule: OR('green-airline.admin')
@@ -48,10 +48,10 @@ Organizations:
         Policies:
             Readers:
                 Type: Signature
-                Rule: OR('blue-airline.admin', 'blue-airline.peer', 'blue-airline.client' )
+                Rule: OR('blue-airline.admin', 'blue-airline.member', 'blue-airline.peer', 'blue-airline.client' )
             Writers:
                 Type: Signature
-                Rule: OR('blue-airline.admin', 'blue-airline.client')
+                Rule: OR('blue-airline.admin', 'blue-airline.member', 'blue-airline.client')
             Admins:
                 Type: Signature
                 Rule: OR('blue-airline.admin')
@@ -66,10 +66,10 @@ Organizations:
         Policies:
             Readers:
                 Type: Signature
-                Rule: OR('green-agencies.admin', 'green-agencies.peer', 'green-agencies.client')
+                Rule: OR('green-agencies.admin', 'green-agencies.member', 'green-agencies.peer', 'green-agencies.client')
             Writers:
                 Type: Signature
-                Rule: OR('green-agencies.admin', 'green-agencies.client')
+                Rule: OR('green-agencies.admin', 'green-agencies.member', 'green-agencies.client')
             Admins:
                 Type: Signature
                 Rule: OR('green-agencies.admin')
@@ -84,10 +84,10 @@ Organizations:
         Policies:
             Readers:
                 Type: Signature
-                Rule: OR('blue-agencies.admin', 'blue-agencies.peer', 'blue-agencies.client')
+                Rule: OR('blue-agencies.admin', 'blue-agencies.member', 'blue-agencies.peer', 'blue-agencies.client')
             Writers:
                 Type: Signature
-                Rule: OR('blue-agencies.admin', 'blue-agencies.client')
+                Rule: OR('blue-agencies.admin', 'blue-agencies.member', 'blue-agencies.client')
             Admins:
                 Type: Signature
                 Rule: OR('blue-agencies.admin')
@@ -102,10 +102,10 @@ Organizations:
         Policies:
             Readers:
                 Type: Signature
-                Rule: OR('further.admin', 'further.peer', 'further.client')
+                Rule: OR('further.admin', 'further.member', 'further.peer', 'further.client')
             Writers:
                 Type: Signature
-                Rule: OR('further.admin', 'further.client')
+                Rule: OR('further.admin', 'further.member', 'further.client')
             Admins:
                 Type: Signature
                 Rule: OR('further.admin')
