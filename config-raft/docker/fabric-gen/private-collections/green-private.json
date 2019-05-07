@@ -1,0 +1,10 @@
+[
+  {
+    "name": "green-private",
+    "policy": "OR('green-airline.member', 'further.member')",
+    "requiredPeerCount": 1,
+    "maxPeerCount": 2,
+    "blockToLive":1000000,
+    "memberOnlyRead": true
+  }
+]

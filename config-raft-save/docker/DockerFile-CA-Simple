@@ -1,0 +1,31 @@
+FROM hyperledger/fabric-baseos:amd64-0.4.14
+
+ENV FABRIC_CA_HOME /etc/hyperledger/fabric-ca-server
+ENV FABRIC_CA_ROOT $GOPATH/src/github.com/hyperledger/fabric-ca
+
+ARG FABRIC_CA_DYNAMIC_LINK=false
+
+RUN mkdir -p $FABRIC_CA_HOME /var/hyperledger/fabric-ca-server
+
+COPY ./bin/fabric-ca-client /usr/local/bin
+RUN chmod +x /usr/local/bin/fabric-ca-client
+
+COPY ./bin/fabric-ca-server /usr/local/bin
+RUN chmod +x /usr/local/bin/fabric-ca-server
+
+RUN apt-get update && apt-get install -y netcat && rm -rf /var/cache/apt
+
+# libraries needed when image is built dynamically
+RUN if [ "$FABRIC_CA_DYNAMIC_LINK" = "true" ]; then apt-get install -y libltdl-dev; fi
+
+# Copy the same certificates that are currently hardcoded into the peers
+ADD ./payload/fabric-ca.tar.bz2 $FABRIC_CA_HOME
+
+EXPOSE 7054
+
+VOLUME $FABRIC_CA_SERVER_HOME
+VOLUME $FABRIC_CA_CLIENT_HOME
+
+WORKDIR $FABRIC_CA_ROOT
+
+CMD fabric-ca-server start -b admin:adminpw

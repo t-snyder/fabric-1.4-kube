@@ -1,0 +1,9 @@
+FROM hyperledger/fabric-orderer:1.4.1
+
+COPY ./fabric-gen/crypto-config/ordererOrganizations/orderer.com/orderers/orderer2.orderer.com/ /var/hyperledger/orderer/
+
+COPY ./fabric-gen/channel-artifacts/ /var/hyperledger/orderer/
+
+WORKDIR /opt/gopath/src/github.com/hyperledger/fabric
+
+#ENTRYPOINT ["/bin/bash", "-c", "'while true; do sleep 20170504; done'"]

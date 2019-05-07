@@ -1,0 +1,298 @@
+################################################################################
+#
+#   Section: Organizations
+#
+#   - This section defines the different organizational identities which will
+#   be referenced later in the configuration.
+#
+################################################################################
+Organizations:
+
+    - &orderer
+        Name: orderer
+        ID: orderer
+        MSPDir: crypto-config/ordererOrganizations/orderer.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: OR('orderer.member')
+            Writers:
+                Type: Signature
+                Rule: OR('orderer.member')
+            Admins:
+                Type: Signature
+                Rule: OR('orderer.admin')
+        
+    - &green-airline
+        Name: green-airline
+        ID: green-airline
+        MSPDir: crypto-config/peerOrganizations/green-airline.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: OR('green-airline.admin', 'green-airline.member', 'green-airline.peer', 'green-airline.client')
+            Writers:
+                Type: Signature
+                Rule: OR('green-airline.admin', 'green-airline.member', 'green-airline.client')
+            Admins:
+                Type: Signature
+                Rule: OR('green-airline.admin')
+        AnchorPeers:
+            - Host: peer0.green-airline.com
+              Port: 7051
+
+    - &blue-airline
+        Name: blue-airline
+        ID: blue-airline
+        MSPDir: crypto-config/peerOrganizations/blue-airline.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: OR('blue-airline.admin', 'blue-airline.member', 'blue-airline.peer', 'blue-airline.client' )
+            Writers:
+                Type: Signature
+                Rule: OR('blue-airline.admin', 'blue-airline.member', 'blue-airline.client')
+            Admins:
+                Type: Signature
+                Rule: OR('blue-airline.admin')
+        AnchorPeers:
+            - Host: peer0.blue-airline.com
+              Port: 7051
+
+    - &green-agencies
+        Name: green-agencies
+        ID: green-agencies
+        MSPDir: crypto-config/peerOrganizations/green-agencies.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: OR('green-agencies.admin', 'green-agencies.member', 'green-agencies.peer', 'green-agencies.client')
+            Writers:
+                Type: Signature
+                Rule: OR('green-agencies.admin', 'green-agencies.member', 'green-agencies.client')
+            Admins:
+                Type: Signature
+                Rule: OR('green-agencies.admin')
+        AnchorPeers:
+            - Host: peer0.green-agencies.com
+              Port: 7051
+
+    - &blue-agencies
+        Name: blue-agencies
+        ID: blue-agencies
+        MSPDir: crypto-config/peerOrganizations/blue-agencies.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: OR('blue-agencies.admin', 'blue-agencies.member', 'blue-agencies.peer', 'blue-agencies.client')
+            Writers:
+                Type: Signature
+                Rule: OR('blue-agencies.admin', 'blue-agencies.member', 'blue-agencies.client')
+            Admins:
+                Type: Signature
+                Rule: OR('blue-agencies.admin')
+        AnchorPeers:
+            - Host: peer0.blue-agencies.com
+              Port: 7051
+ 
+    - &further
+        Name: further
+        ID: further
+        MSPDir: crypto-config/peerOrganizations/further.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: OR('further.admin', 'further.member', 'further.peer', 'further.client')
+            Writers:
+                Type: Signature
+                Rule: OR('further.admin', 'further.member', 'further.client')
+            Admins:
+                Type: Signature
+                Rule: OR('further.admin')
+        AnchorPeers:
+            - Host: peer0.further.com
+              Port: 7051
+
+
+    
+##################################################################################
+Channel: &ChannelDefaults
+    Capabilities:
+        V1_3: true
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: ANY Readers
+        Writers:
+            Type: ImplicitMeta
+            Rule: ANY Writers
+        Admins:
+            Type: ImplicitMeta
+            Rule: MAJORITY Admins
+
+
+################################################################################
+#
+#   SECTION: Orderer
+#
+#   - This section defines the values to encode into a config transaction or
+#   genesis block for orderer related parameters
+#
+################################################################################
+Orderer: &OrdererDefaults
+
+    # Orderer Type: The orderer implementation to start
+    # Available types are "solo" and "kafka"
+    OrdererType: etcdraft
+    Capabilities:
+        V1_1: true
+
+    Addresses:
+        - orderer1-service:7050
+        - orderer2-service:7050
+        - orderer3-service:7050
+
+    # Batch Timeout: The amount of time to wait before creating a batch
+    BatchTimeout: 2s
+
+    # Batch Size: Controls the number of messages batched into a block
+    BatchSize:
+
+        # Max Message Count: The maximum number of messages to permit in a batch
+        MaxMessageCount: 10
+
+        # Absolute Max Bytes: The absolute maximum number of bytes allowed for
+        # the serialized messages in a batch.
+        AbsoluteMaxBytes: 99 MB
+
+        # Preferred Max Bytes: The preferred maximum number of bytes allowed for
+        # the serialized messages in a batch. A message larger than the preferred
+        # max bytes will result in a batch larger than preferred max bytes.
+        PreferredMaxBytes: 512 KB
+
+    EtcdRaft:
+        # The set of Raft replicas for this network. For the etcd/raft-based
+        # implementation, we expect every replica to also be an OSN. Therefore,
+        # a subset of the host:port items enumerated in this list should be
+        # replicated under the Orderer.Addresses key above.
+        Consenters:
+            - Host: orderer1-service
+              Port: 7050
+              ClientTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer1.orderer.com/tls/server.crt
+              ServerTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer1.orderer.com/tls/server.crt
+            - Host: orderer2-service
+              Port: 7050
+              ClientTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer2.orderer.com/tls/server.crt
+              ServerTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer2.orderer.com/tls/server.crt
+            - Host: orderer3-service
+              Port: 7050
+              ClientTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer3.orderer.com/tls/server.crt
+              ServerTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer3.orderer.com/tls/server.crt
+
+        # Options to be specified for all the etcd/raft nodes. The values here
+        # are the defaults for all new channels and can be modified on a
+        # per-channel basis via configuration updates.
+        Options:
+            # TickInterval is the time interval between two Node.Tick invocations.
+            TickInterval: 500ms
+
+            # ElectionTick is the number of Node.Tick invocations that must pass
+            # between elections. That is, if a follower does not receive any
+            # message from the leader of current term before ElectionTick has
+            # elapsed, it will become candidate and start an election.
+            # ElectionTick must be greater than HeartbeatTick.
+            ElectionTick: 10
+
+            # HeartbeatTick is the number of Node.Tick invocations that must
+            # pass between heartbeats. That is, a leader sends heartbeat
+            # messages to maintain its leadership every HeartbeatTick ticks.
+            HeartbeatTick: 1
+
+            # MaxInflightBlocks limits the max number of in-flight append messages
+            # during optimistic replication phase.
+            MaxInflightBlocks: 5
+
+            # SnapshotIntervalSize defines number of bytes per which a snapshot is taken
+            SnapshotIntervalSize: 20 MB
+
+    Policies:
+        Readers:
+          Type: ImplicitMeta
+          Rule: ANY Readers
+        Writers:
+          Type: ImplicitMeta
+          Rule: ANY Writers
+        Admins:
+          Type: ImplicitMeta
+          Rule: MAJORITY Admins
+        BlockValidation:
+            Type: ImplicitMeta
+            Rule: ANY Writers
+
+    # Organizations is the list of orgs which are defined as participants on
+    # the orderer side of the network
+    Organizations:
+
+################################################################################
+#
+#   SECTION: Application
+#
+#   - This section defines the values to encode into a config transaction or
+#   genesis block for application related parameters
+#
+################################################################################
+Application: &ApplicationDefaults
+    Capabilities:
+        V1_3: true
+    Policies:
+        Readers:
+          Type: ImplicitMeta
+          Rule: ANY Readers
+        Writers:
+          Type: ImplicitMeta
+          Rule: ANY Writers
+        Admins:
+          Type: ImplicitMeta
+          Rule: MAJORITY Admins
+
+    # Organizations is the list of orgs which are defined as participants on
+    # the application side of the network
+    Organizations:
+    
+##################################################################################
+Profiles:
+
+    LocalDev:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *orderer
+        Application:
+            <<: *ApplicationDefaults
+        Consortiums:
+            FurtherConsortium:
+                Organizations:
+                    - *green-airline
+                    - *green-agencies
+                    - *blue-airline
+                    - *blue-agencies
+                    - *further
+
+    GreenChannel:
+        Consortium: FurtherConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *green-airline
+                - *green-agencies
+                - *further
+
+    BlueChannel:
+        Consortium: FurtherConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *blue-airline
+                - *blue-agencies
+                - *further
