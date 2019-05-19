@@ -8,20 +8,50 @@
 ################################################################################
 Organizations:
 
-    - &orderer
-        Name: orderer
-        ID: orderer
-        MSPDir: crypto-config/ordererOrganizations/orderer.com/msp
+    - &orderer1
+        Name: orderer1
+        ID: orderer1
+        MSPDir: crypto-config/ordererOrganizations/orderer1.com/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: OR('orderer.member')
+                Rule: OR('orderer1.member')
             Writers:
                 Type: Signature
-                Rule: OR('orderer.member')
+                Rule: OR('orderer1.member')
             Admins:
                 Type: Signature
-                Rule: OR('orderer.admin')
+                Rule: OR('orderer1.admin')
+
+    - &orderer2
+        Name: orderer2
+        ID: orderer2
+        MSPDir: crypto-config/ordererOrganizations/orderer2.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: OR('orderer2.member')
+            Writers:
+                Type: Signature
+                Rule: OR('orderer2.member')
+            Admins:
+                Type: Signature
+                Rule: OR('orderer2.admin')
+
+    - &orderer3
+        Name: orderer3
+        ID: orderer3
+        MSPDir: crypto-config/ordererOrganizations/orderer3.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: OR('orderer3.member')
+            Writers:
+                Type: Signature
+                Rule: OR('orderer3.member')
+            Admins:
+                Type: Signature
+                Rule: OR('orderer3.admin')
         
     - &green-airline
         Name: green-airline
@@ -148,9 +178,9 @@ Orderer: &OrdererDefaults
         V1_1: true
 
     Addresses:
-        - orderer1-service:7050
-        - orderer2-service:7050
-        - orderer3-service:7050
+        - orderer1:7050
+        - orderer2:7050
+        - orderer3:7050
 
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s
@@ -176,18 +206,18 @@ Orderer: &OrdererDefaults
         # a subset of the host:port items enumerated in this list should be
         # replicated under the Orderer.Addresses key above.
         Consenters:
-            - Host: orderer1-service
+            - Host: orderer1
               Port: 7050
-              ClientTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer1.orderer.com/tls/server.crt
-              ServerTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer1.orderer.com/tls/server.crt
-            - Host: orderer2-service
+              ClientTLSCert: crypto-config/ordererOrganizations/orderer1.com/orderers/orderer1.orderer1.com/tls/server.crt
+              ServerTLSCert: crypto-config/ordererOrganizations/orderer1.com/orderers/orderer1.orderer1.com/tls/server.crt
+            - Host: orderer2
               Port: 7050
-              ClientTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer2.orderer.com/tls/server.crt
-              ServerTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer2.orderer.com/tls/server.crt
-            - Host: orderer3-service
+              ClientTLSCert: crypto-config/ordererOrganizations/orderer2.com/orderers/orderer2.orderer2.com/tls/server.crt
+              ServerTLSCert: crypto-config/ordererOrganizations/orderer2.com/orderers/orderer2.orderer2.com/tls/server.crt
+            - Host: orderer3
               Port: 7050
-              ClientTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer3.orderer.com/tls/server.crt
-              ServerTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer3.orderer.com/tls/server.crt
+              ClientTLSCert: crypto-config/ordererOrganizations/orderer3.com/orderers/orderer3.orderer3.com/tls/server.crt
+              ServerTLSCert: crypto-config/ordererOrganizations/orderer3.com/orderers/orderer3.orderer3.com/tls/server.crt
 
         # Options to be specified for all the etcd/raft nodes. The values here
         # are the defaults for all new channels and can be modified on a
@@ -267,7 +297,10 @@ Profiles:
         Orderer:
             <<: *OrdererDefaults
             Organizations:
-                - *orderer
+                - *orderer1
+                - *orderer2
+                - *orderer3
+                
         Application:
             <<: *ApplicationDefaults
         Consortiums:

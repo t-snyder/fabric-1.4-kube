@@ -50,7 +50,7 @@ spec:
             - name: ORDERER_GENERAL_LISTENPORT
               value: "7050"
             - name: ORDERER_GENERAL_TLS_ENABLED
-              value: "false"
+              value: "true"
             - name: ORDERER_RAMLEDGER_HISTORY_SIZE
               value: "100"
             - name: CONFIGTX_ORDERER_ORDERERTYPE
@@ -60,6 +60,12 @@ spec:
             - name: ORDERER_GENERAL_TLS_CERTIFICATE
               value: "/var/hyperledger/orderer/tls/server.crt"
             - name: ORDERER_GENERAL_TLS_ROOTCAS
+              value: "[/var/hyperledger/orderer/tls/ca.crt]"
+            - name: ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE
+              value: "/var/hyperledger/orderer/tls/server.crt"
+            - name: ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY
+              value: "/var/hyperledger/orderer/tls/server.key"
+            - name: ORDERER_GENERAL_CLUSTER_ROOTCAS
               value: "[/var/hyperledger/orderer/tls/ca.crt]"
           command:
             - orderer
@@ -75,7 +81,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: orderer1-service
+  name: orderer1
   labels:
     app: fabric
 spec:

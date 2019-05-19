@@ -1,0 +1,14 @@
+FROM openjdk:8-jre
+
+RUN ["mkdir", "/usr/src/app"]
+RUN ["mkdir", "/usr/src/app/config"]
+RUN ["mkdir", "/usr/src/app/secret"]
+RUN ["mkdir", "/usr/src/app/tls"]
+RUN ["mkdir", "/usr/src/app/tls/Admin"]
+RUN ["mkdir", "/usr/src/app/tls/User1"]
+RUN ["mkdir", "/usr/src/app/block-seq"]
+
+COPY ./fabric-gen/crypto-config/peerOrganizations/green-airline.com/users/Admin@green-airline.com/tls/ /usr/src/app/tls/Admin/
+COPY ./fabric-gen/crypto-config/peerOrganizations/green-airline.com/users/User1@green-airline.com/tls/ /usr/src/app/tls/User1/
+ 
+COPY ./bin/client-app-0.1.jar /usr/lib/clientapp.jar
