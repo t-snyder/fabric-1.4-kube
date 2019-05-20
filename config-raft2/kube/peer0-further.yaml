@@ -45,13 +45,13 @@ spec:
             - name: CORE_VM_ENDPOINT
               value: unix:///host/var/run/docker.sock
             - name: CORE_PEER_ID
-              value: "peer0.further.com"
+              value: "peer0.bsps.com"
             - name: CORE_PEER_LOCALMSPID
-              value: "further"
+              value: "BspsMSP"
             - name: CORE_PEER_ADDRESS
-              value: "peer0.further.com:7051"
+              value: "peer0.bsps.com:7051"
             - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
-              value: "peer0.further.com:7051"
+              value: "peer0.bsps.com:7051"
 #            - name: CORE_PEER_GOSSIP_BOOTSTRAP
 #              value: "peer0-further:7051"
             - name: CORE_PEER_GOSSIP_USELEADERELECTION
@@ -138,7 +138,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: peer0-further
+  name: peer0-bsps
   labels:
     app: fabric
 spec:

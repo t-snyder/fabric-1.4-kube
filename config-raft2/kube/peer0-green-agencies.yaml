@@ -35,13 +35,13 @@ spec:
             - name: CORE_VM_ENDPOINT
               value: unix:///host/var/run/docker.sock
             - name: CORE_PEER_ID
-              value: "peer0.green-agencies.com"
+              value: "peer0.greenagencies.com"
             - name: CORE_PEER_LOCALMSPID
-              value: "green-agencies"
+              value: "GreenAgenciesMSP"
             - name: CORE_PEER_ADDRESS
-              value: "peer0.green-agencies.com:7051"
+              value: "peer0.greenagencies.com:7051"
             - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
-              value: "peer0.green-agencies.com:7051"
+              value: "peer0.greenagencies.com:7051"
 #            - name: CORE_PEER_GOSSIP_BOOTSTRAP
 #              value: "peer0-green-agencies:7051"
             - name: CORE_PEER_GOSSIP_USELEADERELECTION
@@ -138,7 +138,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: peer0-green-agencies
+  name: peer0-greenagencies
   labels:
     app: fabric
 spec:

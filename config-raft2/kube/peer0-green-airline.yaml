@@ -45,13 +45,13 @@ spec:
             - name: CORE_VM_ENDPOINT
               value: unix:///host/var/run/docker.sock
             - name: CORE_PEER_ID
-              value: "peer0.green-airline.com"
+              value: "peer0.greenairline.com"
             - name: CORE_PEER_LOCALMSPID
-              value: "green-airline"
+              value: "GreenAirlineMSP"
             - name: CORE_PEER_ADDRESS
-              value: "peer0.green-airline.com:7051"
+              value: "peer0.greenairline.com:7051"
             - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
-              value: "peer0.green-airline.com:7051"
+              value: "peer0.greenairline.com:7051"
 #            - name: CORE_PEER_GOSSIP_BOOTSTRAP
 #              value: "peer0-green-airline:7051"
             - name: CORE_PEER_GOSSIP_USELEADERELECTION
@@ -140,7 +140,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: peer0-green-airline
+  name: peer0-greenairline
   labels:
     app: fabric
 spec:

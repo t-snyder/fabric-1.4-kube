@@ -35,13 +35,13 @@ spec:
             - name: CORE_VM_ENDPOINT
               value: unix:///host/var/run/docker.sock
             - name: CORE_PEER_ID
-              value: "peer0.blue-agencies.com"
+              value: "peer0.blueagencies.com"
             - name: CORE_PEER_LOCALMSPID
-              value: "blue-agencies"
+              value: "BlueAgenciesMSP"
             - name: CORE_PEER_ADDRESS
-              value: "peer0.blue-agencies.com:7051"
+              value: "peer0.blueagencies.com:7051"
             - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
-              value: "peer0.blue-agencies.com:7051"
+              value: "peer0.blueagencies.com:7051"
 #            - name: CORE_PEER_GOSSIP_BOOTSTRAP
 #              value: "peer0-blue-agencies:7051"
             - name: CORE_PEER_GOSSIP_USELEADERELECTION
@@ -138,7 +138,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: peer0-blue-agencies
+  name: peer0-blueagencies
   labels:
     app: fabric
 spec:
