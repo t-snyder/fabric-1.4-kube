@@ -10,28 +10,14 @@ OrdererOrgs:
   # ---------------------------------------------------------------------------
   # Orderer
   # ---------------------------------------------------------------------------
-  - Name: orderer1
-    Domain: orderer1.com
+  - Name: Orderer
+    Domain: orderer.com
     # ---------------------------------------------------------------------------
     # "Specs" - See PeerOrgs below for complete description
     # ---------------------------------------------------------------------------
     Specs:
       - Hostname: orderer1
- 
-  - Name: orderer2
-    Domain: orderer2.com
-    # ---------------------------------------------------------------------------
-    # "Specs" - See PeerOrgs below for complete description
-    # ---------------------------------------------------------------------------
-    Specs:
       - Hostname: orderer2
-
-  - Name: orderer3
-    Domain: orderer3.com
-    # ---------------------------------------------------------------------------
-    # "Specs" - See PeerOrgs below for complete description
-    # ---------------------------------------------------------------------------
-    Specs:
       - Hostname: orderer3
       
 # ---------------------------------------------------------------------------
@@ -41,8 +27,8 @@ PeerOrgs:
   # ---------------------------------------------------------------------------
   # Org Green Airline
   # ---------------------------------------------------------------------------
-  - Name: green-airline
-    Domain: green-airline.com
+  - Name: GreenAirline
+    Domain: greenairline.com
     EnableNodeOUs: true
     Template:
       Count: 1
@@ -51,8 +37,8 @@ PeerOrgs:
   # ---------------------------------------------------------------------------
   # Org Blue Airline:
   # ---------------------------------------------------------------------------
-  - Name: blue-airline
-    Domain: blue-airline.com
+  - Name: BlueAirline
+    Domain: blueairline.com
     EnableNodeOUs: true
     Template:
       Count: 1
@@ -61,28 +47,18 @@ PeerOrgs:
   # ---------------------------------------------------------------------------
   # Org Green Agencies:
   # ---------------------------------------------------------------------------
-  - Name: green-agencies
-    Domain: green-agencies.com
+  - Name: Agencies
+    Domain: agencies.com
     EnableNodeOUs: true
     Template:
       Count: 1
     Users:
       Count: 1
   # ---------------------------------------------------------------------------
-  # Org Blue Agencies:
+  # Org Billing Settlement Provider
   # ---------------------------------------------------------------------------
-  - Name: blue-agencies
-    Domain: blue-agencies.com
-    EnableNodeOUs: true
-    Template:
-      Count: 1
-    Users:
-      Count: 1
-  # ---------------------------------------------------------------------------
-  # Org Further Networks
-  # ---------------------------------------------------------------------------
-  - Name: further
-    Domain: further.com
+  - Name: Bsps
+    Domain: bsps.com
     EnableNodeOUs: true
     Template:
       Count: 1

@@ -32,7 +32,7 @@ spec:
             - name: ORDERER_GENERAL_GENESISPROFILE
               value: initial
             - name: ORDERER_GENERAL_LOCALMSPID
-              value: "orderer3"
+              value: "OrdererMSP"
             - name: ORDERER_GENERAL_LOCALMSPDIR
               value: "/var/hyperledger/orderer/msp"
             - name: ORDERER_GENERAL_LEDGERTYPE

@@ -1,0 +1,38 @@
+apiVersion: v1
+data:
+  Corefile: |
+    .:53 {
+        errors
+        health
+        rewrite {
+            name regex peer0\.bsps\.com\.$ peer0-bsps.default.svc.cluster.local
+            answer name peer0-bsps\.default\.svc\.cluster\.local\.$ peer0.bsps.com
+        }
+        rewrite {
+            name regex peer0\.blueairline\.com\.$ peer0-blue-airline.default.svc.cluster.local
+            answer name peer0-blue-airline\.default\.svc\.cluster\.local\.$ peer0.blue-irline.com
+        }
+        rewrite {
+            name regex peer0\.agencies\.com\.$ peer0-agencies.default.svc.cluster.local
+            answer name peer0-agencies\.default\.svc\.cluster\.local\.$ peer0.agencies.com
+        }
+        rewrite {
+            name regex peer0\.greenairline\.com\.$ peer0-green-airline.default.svc.cluster.local
+            answer name peer0-green-airline\.default\.svc\.cluster\.local\.$ peer0.greenairline.com
+        }
+        kubernetes cluster.local in-addr.arpa ip6.arpa {
+          pods insecure
+          upstream
+          fallthrough in-addr.arpa ip6.arpa
+        }
+        prometheus :9153
+        forward . /etc/resolv.conf
+        cache 30
+        loop
+        reload
+        loadbalance
+    }
+kind: ConfigMap
+metadata:
+  name: coredns
+  namespace: kube-system

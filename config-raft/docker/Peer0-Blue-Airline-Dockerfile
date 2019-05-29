@@ -3,8 +3,8 @@ FROM hyperledger/fabric-peer:1.4.1
 RUN ["rm", "-rf", "/etc/hyperledger/fabric/msp"]
 RUN ["rm", "-rf", "/etc/hyperledger/fabric/tls"]
 
-COPY ./fabric-gen/crypto-config/peerOrganizations/blue-airline.com/peers/peer0.blue-airline.com/msp /etc/hyperledger/fabric/msp
-COPY ./fabric-gen/crypto-config/peerOrganizations/blue-airline.com/peers/peer0.blue-airline.com/tls /etc/hyperledger/fabric/tls
+COPY ./fabric-gen/crypto-config/peerOrganizations/blueairline.com/peers/peer0.blueairline.com/msp /etc/hyperledger/fabric/msp
+COPY ./fabric-gen/crypto-config/peerOrganizations/blueairline.com/peers/peer0.blueairline.com/tls /etc/hyperledger/fabric/tls
 COPY ./chaincode/go/ /opt/gopath/src/github.com/hyperledger/fabric/examples/chaincode/go
 
 WORKDIR /opt/gopath/src/github.com/hyperledger/fabric/peer

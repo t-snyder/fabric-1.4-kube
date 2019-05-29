@@ -40,19 +40,19 @@ spec:
             - name: CORE_PEER_ID
               value: fabric-cli
             - name: CORE_PEER_ADDRESS
-              value: "peer0.further.com:7051"
+              value: "peer0.bsps.com:7051"
             - name: CORE_PEER_LOCALMSPID
-              value: "further"
+              value: "BspsMSP"
             - name: CORE_PEER_TLS_ENABLED
               value: "true"
             - name: CORE_PEER_TLS_CERT_FILE
-              value: "/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/further.com/peers/peer0.further.com/tls/server.crt"
+              value: "/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/bsps.com/peers/peer0.bsps.com/tls/server.crt"
             - name: CORE_PEER_TLS_KEY_FILE
-              value: "/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/further.com/peers/peer0.further.com/tls/server.key"
+              value: "/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/bsps.com/peers/peer0.bsps.com/tls/server.key"
             - name: CORE_PEER_TLS_ROOTCERT_FILE
-              value: "/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/further.com/peers/peer0.further.com/tls/ca.crt"
+              value: "/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/bsps.com/peers/peer0.bsps.com/tls/ca.crt"
             - name: CORE_PEER_MSPCONFIGPATH
-              value: "/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/further.com/users/Admin@further.com/msp"
+              value: "/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/bsps.com/users/Admin@bsps.com/msp"
             - name: FABRIC_LOGGING_SPEC
               value: debug
             - name: CORE_LOGGING_PEER

@@ -5,24 +5,20 @@ data:
         errors
         health
         rewrite {
-            name regex peer0\.further\.com\.$ peer0-further.default.svc.cluster.local
-            answer name peer0-further\.default\.svc\.cluster\.local\.$ peer0.further.com
+            name regex peer0\.bsps\.com\.$ peer0-bsps.default.svc.cluster.local
+            answer name peer0-bsps\.default\.svc\.cluster\.local\.$ peer0.bsps.com
         }
         rewrite {
-            name regex peer0\.blue-agencies\.com\.$ peer0-blue-agencies.default.svc.cluster.local
-            answer name peer0-blue-agencies\.default\.svc\.cluster\.local\.$ peer0.blue-agencies.com
+            name regex peer0\.blueairline\.com\.$ peer0-blueairline.default.svc.cluster.local
+            answer name peer0-blueairline\.default\.svc\.cluster\.local\.$ peer0.blueairline.com
         }
         rewrite {
-            name regex peer0\.blue-airline\.com\.$ peer0-blue-airline.default.svc.cluster.local
-            answer name peer0-blue-airline\.default\.svc\.cluster\.local\.$ peer0.blue-airline.com
+            name regex peer0\.agencies\.com\.$ peer0-agencies.default.svc.cluster.local
+            answer name peer0-agencies\.default\.svc\.cluster\.local\.$ peer0.agencies.com
         }
         rewrite {
-            name regex peer0\.green-agencies\.com\.$ peer0-green-agencies.default.svc.cluster.local
-            answer name peer0-green-agencies\.default\.svc\.cluster\.local\.$ peer0.green-agencies.com
-        }
-        rewrite {
-            name regex peer0\.green-airline\.com\.$ peer0-green-airline.default.svc.cluster.local
-            answer name peer0-green-airline\.default\.svc\.cluster\.local\.$ peer0.green-airline.com
+            name regex peer0\.greenairline\.com\.$ peer0-greenairline.default.svc.cluster.local
+            answer name peer0-greenairline\.default\.svc\.cluster\.local\.$ peer0.greenairline.com
         }
         kubernetes cluster.local in-addr.arpa ip6.arpa {
           pods insecure

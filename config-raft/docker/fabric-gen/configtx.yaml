@@ -8,157 +8,158 @@
 ################################################################################
 Organizations:
 
-    - &orderer1
-        Name: orderer1
-        ID: orderer1
-        MSPDir: crypto-config/ordererOrganizations/orderer1.com/msp
+    - &OrdererOrg
+        Name: Orderer
+        ID: OrdererMSP
+        MSPDir: crypto-config/ordererOrganizations/orderer.com/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: OR('orderer1.member')
+                Rule: OR('OrdererMSP.member')
             Writers:
                 Type: Signature
-                Rule: OR('orderer1.member')
+                Rule: OR('OrdererMSP.member')
             Admins:
                 Type: Signature
-                Rule: OR('orderer1.admin')
-
-    - &orderer2
-        Name: orderer2
-        ID: orderer2
-        MSPDir: crypto-config/ordererOrganizations/orderer2.com/msp
-        Policies:
-            Readers:
-                Type: Signature
-                Rule: OR('orderer2.member')
-            Writers:
-                Type: Signature
-                Rule: OR('orderer2.member')
-            Admins:
-                Type: Signature
-                Rule: OR('orderer2.admin')
-
-    - &orderer3
-        Name: orderer3
-        ID: orderer3
-        MSPDir: crypto-config/ordererOrganizations/orderer3.com/msp
-        Policies:
-            Readers:
-                Type: Signature
-                Rule: OR('orderer3.member')
-            Writers:
-                Type: Signature
-                Rule: OR('orderer3.member')
-            Admins:
-                Type: Signature
-                Rule: OR('orderer3.admin')
+                Rule: OR('OrdererMSP.admin')
         
-    - &green-airline
-        Name: green-airline
-        ID: green-airline
-        MSPDir: crypto-config/peerOrganizations/green-airline.com/msp
+    - &GreenAirline
+        Name: GreenAirline
+        ID: GreenAirlineMSP
+        MSPDir: crypto-config/peerOrganizations/greenairline.com/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: OR('green-airline.admin', 'green-airline.member', 'green-airline.peer', 'green-airline.client')
+                Rule: OR('GreenAirlineMSP.admin', 'GreenAirlineMSP.member', 'GreenAirlineMSP.peer', 'GreenAirlineMSP.client')
             Writers:
                 Type: Signature
-                Rule: OR('green-airline.admin', 'green-airline.member', 'green-airline.client')
+                Rule: OR('GreenAirlineMSP.admin', 'GreenAirlineMSP.member', 'GreenAirlineMSP.client')
             Admins:
                 Type: Signature
-                Rule: OR('green-airline.admin')
+                Rule: OR('GreenAirlineMSP.admin')
         AnchorPeers:
-            - Host: peer0.green-airline.com
+            - Host: peer0.greenairline.com
               Port: 7051
 
-    - &blue-airline
-        Name: blue-airline
-        ID: blue-airline
-        MSPDir: crypto-config/peerOrganizations/blue-airline.com/msp
+    - &BlueAirline
+        Name: BlueAirline
+        ID: BlueAirlineMSP
+        MSPDir: crypto-config/peerOrganizations/blueairline.com/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: OR('blue-airline.admin', 'blue-airline.member', 'blue-airline.peer', 'blue-airline.client' )
+                Rule: OR('BlueAirlineMSP.admin', 'BlueAirlineMSP.member', 'BlueAirlineMSP.peer', 'BlueAirlineMSP.client' )
             Writers:
                 Type: Signature
-                Rule: OR('blue-airline.admin', 'blue-airline.member', 'blue-airline.client')
+                Rule: OR('BlueAirlineMSP.admin', 'BlueAirlineMSP.member', 'BlueAirlineMSP.client')
             Admins:
                 Type: Signature
-                Rule: OR('blue-airline.admin')
+                Rule: OR('BlueAirlineMSP.admin')
         AnchorPeers:
-            - Host: peer0.blue-airline.com
+            - Host: peer0.blueairline.com
               Port: 7051
 
-    - &green-agencies
-        Name: green-agencies
-        ID: green-agencies
-        MSPDir: crypto-config/peerOrganizations/green-agencies.com/msp
+    - &Agencies
+        Name: Agencies
+        ID: AgenciesMSP
+        MSPDir: crypto-config/peerOrganizations/agencies.com/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: OR('green-agencies.admin', 'green-agencies.member', 'green-agencies.peer', 'green-agencies.client')
+                Rule: OR('AgenciesMSP.admin', 'AgenciesMSP.member', 'AgenciesMSP.peer', 'AgenciesMSP.client')
             Writers:
                 Type: Signature
-                Rule: OR('green-agencies.admin', 'green-agencies.member', 'green-agencies.client')
+                Rule: OR('AgenciesMSP.admin', 'AgenciesMSP.member', 'AgenciesMSP.client')
             Admins:
                 Type: Signature
-                Rule: OR('green-agencies.admin')
+                Rule: OR('AgenciesMSP.admin')
         AnchorPeers:
-            - Host: peer0.green-agencies.com
-              Port: 7051
-
-    - &blue-agencies
-        Name: blue-agencies
-        ID: blue-agencies
-        MSPDir: crypto-config/peerOrganizations/blue-agencies.com/msp
-        Policies:
-            Readers:
-                Type: Signature
-                Rule: OR('blue-agencies.admin', 'blue-agencies.member', 'blue-agencies.peer', 'blue-agencies.client')
-            Writers:
-                Type: Signature
-                Rule: OR('blue-agencies.admin', 'blue-agencies.member', 'blue-agencies.client')
-            Admins:
-                Type: Signature
-                Rule: OR('blue-agencies.admin')
-        AnchorPeers:
-            - Host: peer0.blue-agencies.com
+            - Host: peer0.agencies.com
               Port: 7051
  
-    - &further
-        Name: further
-        ID: further
-        MSPDir: crypto-config/peerOrganizations/further.com/msp
+    - &Bsps
+        Name: Bsps
+        ID: BspsMSP
+        MSPDir: crypto-config/peerOrganizations/bsps.com/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: OR('further.admin', 'further.member', 'further.peer', 'further.client')
+                Rule: OR('BspsMSP.admin', 'BspsMSP.member', 'BspsMSP.peer', 'BspsMSP.client')
             Writers:
                 Type: Signature
-                Rule: OR('further.admin', 'further.member', 'further.client')
+                Rule: OR('BspsMSP.admin', 'BspsMSP.member', 'BspsMSP.client')
             Admins:
                 Type: Signature
-                Rule: OR('further.admin')
+                Rule: OR('BspsMSP.admin')
         AnchorPeers:
-            - Host: peer0.further.com
+            - Host: peer0.bsps.com
               Port: 7051
 
 
-    
-##################################################################################
-Channel: &ChannelDefaults
-    Capabilities:
+################################################################################
+Capabilities:
+    # Channel capabilities apply to both the orderers and the peers and must be
+    # supported by both.
+    # Set the value of the capability to true to require it.
+    Channel: &ChannelCapabilities
         V1_3: true
+
+    # Orderer capabilities apply only to the orderers, and may be safely
+    # used with prior release peers.
+    # Set the value of the capability to true to require it.
+    Orderer: &OrdererCapabilities
+        V1_1: true
+
+    # Application capabilities apply only to the peer network, and may be safely
+    # used with prior release orderers.
+    # Set the value of the capability to true to require it.
+    Application: &ApplicationCapabilities
+        V1_3: true
+        V1_2: false
+        V1_1: false
+
+
+################################################################################
+Application: &ApplicationDefaults
     Policies:
         Readers:
             Type: ImplicitMeta
-            Rule: ANY Readers
+            Rule: "ANY Readers"
         Writers:
             Type: ImplicitMeta
-            Rule: ANY Writers
+            Rule: "ANY Writers"
         Admins:
             Type: ImplicitMeta
-            Rule: MAJORITY Admins
+            Rule: "MAJORITY Admins"
+
+    Capabilities:
+        <<: *ApplicationCapabilities
+
+    # Organizations is the list of orgs which are defined as participants on
+    # the application side of the network
+    Organizations:
+    
+##################################################################################
+Channel: &ChannelDefaults
+    Policies:
+        # Who may invoke the 'Deliver' API
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        # Who may invoke the 'Broadcast' API
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        # By default, who may modify elements at this config level
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+
+    # Capabilities describes the channel level capabilities, see the
+    # dedicated Capabilities section elsewhere in this file for a full
+    # description
+    Capabilities:
+        <<: *ChannelCapabilities
 
 
 ################################################################################
@@ -174,8 +175,6 @@ Orderer: &OrdererDefaults
     # Orderer Type: The orderer implementation to start
     # Available types are "solo" and "kafka"
     OrdererType: etcdraft
-    Capabilities:
-        V1_1: true
 
     Addresses:
         - orderer1:7050
@@ -201,23 +200,20 @@ Orderer: &OrdererDefaults
         PreferredMaxBytes: 512 KB
 
     EtcdRaft:
-        # The set of Raft replicas for this network. For the etcd/raft-based
-        # implementation, we expect every replica to also be an OSN. Therefore,
-        # a subset of the host:port items enumerated in this list should be
-        # replicated under the Orderer.Addresses key above.
         Consenters:
-            - Host: orderer1
-              Port: 7050
-              ClientTLSCert: crypto-config/ordererOrganizations/orderer1.com/orderers/orderer1.orderer1.com/tls/server.crt
-              ServerTLSCert: crypto-config/ordererOrganizations/orderer1.com/orderers/orderer1.orderer1.com/tls/server.crt
-            - Host: orderer2
-              Port: 7050
-              ClientTLSCert: crypto-config/ordererOrganizations/orderer2.com/orderers/orderer2.orderer2.com/tls/server.crt
-              ServerTLSCert: crypto-config/ordererOrganizations/orderer2.com/orderers/orderer2.orderer2.com/tls/server.crt
-            - Host: orderer3
-              Port: 7050
-              ClientTLSCert: crypto-config/ordererOrganizations/orderer3.com/orderers/orderer3.orderer3.com/tls/server.crt
-              ServerTLSCert: crypto-config/ordererOrganizations/orderer3.com/orderers/orderer3.orderer3.com/tls/server.crt
+        - Host: orderer1
+          Port: 7050
+          ClientTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer1.orderer.com/tls/server.crt
+          ServerTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer1.orderer.com/tls/server.crt
+        - Host: orderer2
+          Port: 7050
+          ClientTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer2.orderer.com/tls/server.crt
+          ServerTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer2.orderer.com/tls/server.crt
+        - Host: orderer3
+          Port: 7050
+          ClientTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer3.orderer.com/tls/server.crt
+          ServerTLSCert: crypto-config/ordererOrganizations/orderer.com/orderers/orderer3.orderer.com/tls/server.crt
+
 
         # Options to be specified for all the etcd/raft nodes. The values here
         # are the defaults for all new channels and can be modified on a
@@ -247,46 +243,22 @@ Orderer: &OrdererDefaults
 
     Policies:
         Readers:
-          Type: ImplicitMeta
-          Rule: ANY Readers
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
         Writers:
-          Type: ImplicitMeta
-          Rule: ANY Writers
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
         Admins:
-          Type: ImplicitMeta
-          Rule: MAJORITY Admins
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+        # BlockValidation specifies what signatures must be included in the block
+        # from the orderer for the peer to validate it.
         BlockValidation:
             Type: ImplicitMeta
-            Rule: ANY Writers
+            Rule: "ANY Writers"
 
     # Organizations is the list of orgs which are defined as participants on
     # the orderer side of the network
-    Organizations:
-
-################################################################################
-#
-#   SECTION: Application
-#
-#   - This section defines the values to encode into a config transaction or
-#   genesis block for application related parameters
-#
-################################################################################
-Application: &ApplicationDefaults
-    Capabilities:
-        V1_3: true
-    Policies:
-        Readers:
-          Type: ImplicitMeta
-          Rule: ANY Readers
-        Writers:
-          Type: ImplicitMeta
-          Rule: ANY Writers
-        Admins:
-          Type: ImplicitMeta
-          Rule: MAJORITY Admins
-
-    # Organizations is the list of orgs which are defined as participants on
-    # the application side of the network
     Organizations:
     
 ##################################################################################
@@ -294,38 +266,45 @@ Profiles:
 
     LocalDev:
         <<: *ChannelDefaults
+        Capabilities:
+            <<: *ChannelCapabilities
+  
         Orderer:
             <<: *OrdererDefaults
+            OrdererType: etcdraft
+
             Organizations:
-                - *orderer1
-                - *orderer2
-                - *orderer3
-                
+            - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+ 
         Application:
             <<: *ApplicationDefaults
+            Organizations:
+            - <<: *OrdererOrg
+ 
         Consortiums:
-            FurtherConsortium:
+            BspsConsortium:
                 Organizations:
-                    - *green-airline
-                    - *green-agencies
-                    - *blue-airline
-                    - *blue-agencies
-                    - *further
+                    - *GreenAirline
+                    - *Agencies
+                    - *BlueAirline
+                    - *Bsps
 
     GreenChannel:
-        Consortium: FurtherConsortium
+        Consortium: BspsConsortium
         Application:
             <<: *ApplicationDefaults
             Organizations:
-                - *green-airline
-                - *green-agencies
-                - *further
+                - *GreenAirline
+                - *Agencies
+                - *Bsps
 
     BlueChannel:
-        Consortium: FurtherConsortium
+        Consortium: BspsConsortium
         Application:
             <<: *ApplicationDefaults
             Organizations:
-                - *blue-airline
-                - *blue-agencies
-                - *further
+                - *BlueAirline
+                - *Agencies
+                - *Bsps

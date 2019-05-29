@@ -1,7 +1,7 @@
 [
   {
     "name": "green-private",
-    "policy": "OR('green-airline.member', 'further.member')",
+    "policy": "OR('GreenAirlineMSP.member', 'BspsMSP.member')",
     "requiredPeerCount": 1,
     "maxPeerCount": 2,
     "blockToLive":1000000,

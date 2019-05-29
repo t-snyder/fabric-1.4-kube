@@ -1,0 +1,64 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# ---------------------------------------------------------------------------
+# "OrdererOrgs" - Definition of organizations managing orderer nodes
+# ---------------------------------------------------------------------------
+OrdererOrgs:
+  # ---------------------------------------------------------------------------
+  # Orderer
+  # ---------------------------------------------------------------------------
+  - Name: Orderer
+    Domain: orderer.com
+    # ---------------------------------------------------------------------------
+    # "Specs" - See PeerOrgs below for complete description
+    # ---------------------------------------------------------------------------
+    Specs:
+      - Hostname: orderer
+# ---------------------------------------------------------------------------
+# "PeerOrgs" - Definition of organizations managing peer nodes
+# ---------------------------------------------------------------------------
+PeerOrgs:
+  # ---------------------------------------------------------------------------
+  # Org Green Airline
+  # ---------------------------------------------------------------------------
+  - Name: GreenAirline
+    Domain: greenairline.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  # ---------------------------------------------------------------------------
+  # Org Blue Airline:
+  # ---------------------------------------------------------------------------
+  - Name: BlueAirline
+    Domain: blueairline.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  # ---------------------------------------------------------------------------
+  # Org Agencies:
+  # ---------------------------------------------------------------------------
+  - Name: Agencies
+    Domain: agencies.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  # ---------------------------------------------------------------------------
+  # Org Further Networks
+  # ---------------------------------------------------------------------------
+  - Name: Bsps
+    Domain: bsps.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+      

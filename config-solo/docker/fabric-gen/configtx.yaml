@@ -1,0 +1,232 @@
+################################################################################
+#
+#   Section: Organizations
+#
+#   - This section defines the different organizational identities which will
+#   be referenced later in the configuration.
+#
+################################################################################
+Organizations:
+
+    - &OrdererOrg
+        Name: Orderer
+        ID: OrdererMSP
+        MSPDir: crypto-config/ordererOrganizations/orderer.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: OR('OrdererMSP.member')
+            Writers:
+                Type: Signature
+                Rule: OR('OrdererMSP.member')
+            Admins:
+                Type: Signature
+                Rule: OR('OrdererMSP.admin')
+        
+    - &GreenAirline
+        Name: GreenAirline
+        ID: GreenAirlineMSP
+        MSPDir: crypto-config/peerOrganizations/greenairline.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: OR('GreenAirlineMSP.admin', 'GreenAirlineMSP.member', 'GreenAirlineMSP.peer', 'GreenAirlineMSP.client')
+            Writers:
+                Type: Signature
+                Rule: OR('GreenAirlineMSP.admin', 'GreenAirlineMSP.member', 'GreenAirlineMSP.client')
+            Admins:
+                Type: Signature
+                Rule: OR('GreenAirlineMSP.admin')
+        AnchorPeers:
+            - Host: peer0.greenairline.com
+              Port: 7051
+
+    - &BlueAirline
+        Name: BlueAirline
+        ID: BlueAirlineMSP
+        MSPDir: crypto-config/peerOrganizations/blueairline.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: OR('BlueAirlineMSP.admin', 'BlueAirlineMSP.member', 'BlueAirlineMSP.peer', 'BlueAirlineMSP.client' )
+            Writers:
+                Type: Signature
+                Rule: OR('BlueAirlineMSP.admin', 'BlueAirlineMSP.member', 'BlueAirlineMSP.client')
+            Admins:
+                Type: Signature
+                Rule: OR('BlueAirlineMSP.admin')
+        AnchorPeers:
+            - Host: peer0.blueairline.com
+              Port: 7051
+
+    - &Agencies
+        Name: Agencies
+        ID: AgenciesMSP
+        MSPDir: crypto-config/peerOrganizations/agencies.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: OR('AgenciesMSP.admin', 'AgenciesMSP.member', 'AgenciesMSP.peer', 'AgenciesMSP.client')
+            Writers:
+                Type: Signature
+                Rule: OR('AgenciesMSP.admin', 'AgenciesMSP.member', 'AgenciesMSP.client')
+            Admins:
+                Type: Signature
+                Rule: OR('AgenciesMSP.admin')
+        AnchorPeers:
+            - Host: peer0.agencies.com
+              Port: 7051
+ 
+    - &Bsps
+        Name: Bsps
+        ID: BspsMSP
+        MSPDir: crypto-config/peerOrganizations/bsps.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: OR('BspsMSP.admin', 'BspsMSP.member', 'BspsMSP.peer', 'BspsMSP.client')
+            Writers:
+                Type: Signature
+                Rule: OR('BspsMSP.admin', 'BspsMSP.member', 'BspsMSP.client')
+            Admins:
+                Type: Signature
+                Rule: OR('BspsMSP.admin')
+        AnchorPeers:
+            - Host: peer0.bsps.com
+              Port: 7051
+
+
+    
+##################################################################################
+Channel: &ChannelDefaults
+    Capabilities:
+        V1_3: true
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: ANY Readers
+        Writers:
+            Type: ImplicitMeta
+            Rule: ANY Writers
+        Admins:
+            Type: ImplicitMeta
+            Rule: MAJORITY Admins
+
+
+################################################################################
+#
+#   SECTION: Orderer
+#
+#   - This section defines the values to encode into a config transaction or
+#   genesis block for orderer related parameters
+#
+################################################################################
+Orderer: &OrdererDefaults
+
+    # Orderer Type: The orderer implementation to start
+    # Available types are "solo" and "kafka"
+    OrdererType: solo
+    Capabilities:
+        V1_1: true
+
+    Addresses:
+        - orderer:7050
+
+    # Batch Timeout: The amount of time to wait before creating a batch
+    BatchTimeout: 2s
+
+    # Batch Size: Controls the number of messages batched into a block
+    BatchSize:
+
+        # Max Message Count: The maximum number of messages to permit in a batch
+        MaxMessageCount: 10
+
+        # Absolute Max Bytes: The absolute maximum number of bytes allowed for
+        # the serialized messages in a batch.
+        AbsoluteMaxBytes: 99 MB
+
+        # Preferred Max Bytes: The preferred maximum number of bytes allowed for
+        # the serialized messages in a batch. A message larger than the preferred
+        # max bytes will result in a batch larger than preferred max bytes.
+        PreferredMaxBytes: 512 KB
+
+    Policies:
+        Readers:
+          Type: ImplicitMeta
+          Rule: ANY Readers
+        Writers:
+          Type: ImplicitMeta
+          Rule: ANY Writers
+        Admins:
+          Type: ImplicitMeta
+          Rule: MAJORITY Admins
+        BlockValidation:
+            Type: ImplicitMeta
+            Rule: ANY Writers
+
+    # Organizations is the list of orgs which are defined as participants on
+    # the orderer side of the network
+    Organizations:
+
+################################################################################
+#
+#   SECTION: Application
+#
+#   - This section defines the values to encode into a config transaction or
+#   genesis block for application related parameters
+#
+################################################################################
+Application: &ApplicationDefaults
+    Capabilities:
+        V1_3: true
+    Policies:
+        Readers:
+          Type: ImplicitMeta
+          Rule: ANY Readers
+        Writers:
+          Type: ImplicitMeta
+          Rule: ANY Writers
+        Admins:
+          Type: ImplicitMeta
+          Rule: MAJORITY Admins
+
+    # Organizations is the list of orgs which are defined as participants on
+    # the application side of the network
+    Organizations:
+    
+##################################################################################
+Profiles:
+
+    LocalDev:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+        Application:
+            <<: *ApplicationDefaults
+        Consortiums:
+            BspsConsortium:
+                Organizations:
+                    - *GreenAirline
+                    - *BlueAirline
+                    - *Agencies
+                    - *Bsps
+
+    GreenChannel:
+        Consortium: BspsConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *GreenAirline
+                - *Agencies
+                - *Bsps
+
+    BlueChannel:
+        Consortium: BspsConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *BlueAirline
+                - *Agencies
+                - *Bsps

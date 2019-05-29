@@ -28,11 +28,11 @@ spec:
             - name: ORDERER_GENERAL_GENESISMETHOD
               value: "file"
             - name: ORDERER_GENERAL_GENESISFILE
-              value: "/var/hyperledger/orderer/genesis.block"
+              value: "/var/hyperledger/orderer/orderer.genesis.block"
             - name: ORDERER_GENERAL_GENESISPROFILE
               value: initial
             - name: ORDERER_GENERAL_LOCALMSPID
-              value: "orderer1"
+              value: "OrdererMSP"
             - name: ORDERER_GENERAL_LOCALMSPDIR
               value: "/var/hyperledger/orderer/msp"
             - name: ORDERER_GENERAL_LEDGERTYPE
